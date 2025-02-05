@@ -38,8 +38,8 @@ export class AuthService{
         try{
             let res = await fetch(`http://localhost:3001/user?username=${username}`);
             let user = await res.json();
-        if(! user) {
-            res = await fetch(`localhost:3001/user?email=${username}`);
+        if(!user || user.length==0) {
+            res = await fetch(`http://localhost:3001/user?email=${username}`);
             user = await res.json();
         }
         if(!user || user.length === 0) {
